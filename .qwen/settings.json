@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(timeout *)",
+      "Bash(tasklist *)",
+      "Bash(taskkill *)",
+      "Bash(npx *)"
+    ]
+  },
+  "$version": 3
+}
