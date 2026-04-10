@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import electron from 'vite-plugin-electron';
 import renderer from 'vite-plugin-electron-renderer';
 import { resolve } from 'path';
+import { copyFileSync, mkdirSync, existsSync } from 'fs';
 
 export default defineConfig({
   plugins: [
@@ -47,6 +48,29 @@ export default defineConfig({
       },
     ]),
     renderer(),
+    {
+      name: 'copy-assets',
+      closeBundle() {
+        const assetsDir = resolve(__dirname, 'dist/renderer/assets');
+        const srcAssetsDir = resolve(__dirname, 'assets');
+        
+        if (!existsSync(assetsDir)) {
+          mkdirSync(assetsDir, { recursive: true });
+        }
+        
+        if (existsSync(srcAssetsDir)) {
+          const files = ['logo.png'];
+          files.forEach(file => {
+            const src = resolve(srcAssetsDir, file);
+            const dest = resolve(assetsDir, file);
+            if (existsSync(src)) {
+              copyFileSync(src, dest);
+              console.log(`Copied ${file} to dist/renderer/assets`);
+            }
+          });
+        }
+      },
+    },
   ],
   resolve: {
     alias: {
@@ -62,5 +86,11 @@ export default defineConfig({
   build: {
     outDir: '../../dist/renderer',
     emptyOutDir: true,
+    assetsDir: 'assets',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src/renderer/index.html'),
+      },
+    },
   },
 });

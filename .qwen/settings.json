@@ -5,7 +5,9 @@
       "Bash(timeout *)",
       "Bash(tasklist *)",
       "Bash(taskkill *)",
-      "Bash(npx *)"
+      "Bash(npx *)",
+      "Bash(move *)",
+      "Bash(powershell *)"
     ]
   },
   "$version": 3

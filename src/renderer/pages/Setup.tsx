@@ -132,7 +132,7 @@ export function Setup(): JSX.Element {
           {/* Header */}
           <div className="mb-8 flex flex-col items-center text-center">
             <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-500/20 to-purple-500/20 border border-white/10 shadow-glow">
-              <span className="material-symbols-rounded text-5xl text-accent-400">shield</span>
+              <img src="/assets/logo.png" alt="VaultPass Logo" className="h-full w-full object-contain" />
             </div>
             <h1 className="text-3xl font-bold text-text-primary tracking-tight">
               Create Master Password

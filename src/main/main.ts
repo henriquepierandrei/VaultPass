@@ -24,6 +24,7 @@ function createWindow(): void {
     title: 'VaultPass',
     backgroundColor: '#0f1117',
     show: false,
+    icon: join(__dirname, '../../assets/logo.png'),
     webPreferences: {
       preload: join(__dirname, '../preload/preload.js'),
       contextIsolation: true,
